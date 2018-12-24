@@ -140,7 +140,7 @@ The server is implemented in `ServerApp.java` and uses gRPC for client\server co
     ```  
     * To stop the server, hit `Ctrl+c` and kill the process.
 #### Client
-The client is very simple and implement a simple gRPC client. Note that:
+The client implements a simple gRPC client. Note that:
 * The client uses blocking stub (although non of the server RPCs is blocking).
 * A transaction may denied due to lack of space in the server transaction pool.
 * The `add` action only adds the transaction to the transaction pool, and it may took a while 
