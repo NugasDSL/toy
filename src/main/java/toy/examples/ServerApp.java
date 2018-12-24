@@ -29,7 +29,7 @@ public class ServerApp extends blockchainServiceGrpc.blockchainServiceImplBase {
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
     }
 
-    public void serve() {
+    private void serve() {
         tServer.start();
         tServer.serve();
         try {
@@ -44,7 +44,7 @@ public class ServerApp extends blockchainServiceGrpc.blockchainServiceImplBase {
         while (true);
     }
 
-    public void shutdown() {
+    void shutdown() {
         reqReciever.shutdown();
         tServer.shutdown();
     }
