@@ -66,7 +66,7 @@ message accepted {
 
 message approved {
     Transaction tx = 1;
-    blockStatistics st = 3;
+    blockStatistics st = 2;
 }
 
 message read {

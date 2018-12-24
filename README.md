@@ -23,18 +23,24 @@ This work is an implementation of the TOY algorithm described in TBA
 1. Go to the project directory and run:
     * `mvn package`
 1. `lib/toy-core-1.0.jar` will be created under the project directory
-1. You may now use this jar to create a _TOY_ server
+1. You may now use this jar to create a _Toy_ server
 
-## Configurations
+### Configurations
 An example configuration can be found under `conf/`
-### bft-SMaRt's Configuration
+#### bft-SMaRt Configuration
 Toy uses bft-SMaRt as an underlying platform in three different modules (_bbc_, _panic_ and _sync_). Hence, Toy configuration should include
 three different configuration directories - each one for each module. `conf/bbc`, `conf/panic` and `conf/sync` are samples for
 such configurations with a single node.
 
 Deeper explanation of bft-SMaRt configuration can be found [here](https://github.com/bft-smart/library/wiki/BFT-SMaRt-Configuration)
-### Toy's Configuration
-Toy's configuration is consist of a single `config.toml` file that describes Toy's settings as well as the paths to bft-SMaRt's configurations.
+#### Toy Configuration
+Toy configuration is consist of a single `config.toml` file that describes Toy's settings as well as the paths to bft-SMaRt's configurations.
 
-More about Toy's configuration can be found in the Wiki [citeciteicite]
+More about Toy's configuration can be found in the WiKi [citeciteicite]
 
+### Example
+We now expline the example provaided in `src/main/java/toy/examples`. The example establishes a simple client/server Blockchain application 
+using Toy library.
+
+The server is implemented in `ServerApp.java` and uses gRPC for client\server communication. We already built an IDL in 
+`src/main/java/protos` but you may implement your own IDL.  

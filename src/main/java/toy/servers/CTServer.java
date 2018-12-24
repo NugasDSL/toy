@@ -14,15 +14,15 @@ import static java.lang.String.format;
 public class CTServer extends ToyServer {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CTServer.class);
 
-    public CTServer(String addr, int rmfPort, int id, int channel, int f,
+    public CTServer(String addr, int wrbPort, int id, int channel, int f,
                     int maxTx, boolean fastMode, WrbNode wrb, RBrodcastService panic, RBrodcastService sync) {
-        super(addr, rmfPort, id, channel, f, maxTx, fastMode, wrb, panic, sync);
+        super(addr, wrbPort, id, channel, f, maxTx, fastMode, wrb, panic, sync);
     }
 
-    public CTServer(String addr, int rmfPort, int id, int channel, int f, int tmo, int tmoInterval,
+    public CTServer(String addr, int wrbPort, int id, int channel, int f, int tmo, int tmoInterval,
                     int maxTx, boolean fastMode, ArrayList<Node> cluster,
                     String bbcConfig, String panicConfig, String syncConfig, String serverCrt, String serverPrivKey, String caRoot) {
-        super(addr, rmfPort, id, channel, f, tmo, tmoInterval, maxTx, fastMode, cluster,
+        super(addr, wrbPort, id, channel, f, tmo, tmoInterval, maxTx, fastMode, cluster,
                 bbcConfig, panicConfig, syncConfig, serverCrt, serverPrivKey, caRoot);
     }
 
