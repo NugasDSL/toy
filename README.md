@@ -41,7 +41,7 @@ More about Toy's configuration can be found in the WiKi [citeciteicite].
 ### Example
 We now expline the example provaided in `src/main/java/toy/examples`. The example establishes a simple client/server Blockchain application 
 using Toy library.
-
+#### Server
 The server is implemented in `ServerApp.java` and uses gRPC for client\server communication. We already built an IDL in 
 `src/main/java/protos` but you may implement your own IDL. 
 1. In the constructor we initialize the ToyServer as well as some local fields.
@@ -139,3 +139,11 @@ The server is implemented in `ServerApp.java` and uses gRPC for client\server co
     }
     ```  
     * To stop the server, hit `Ctrl+c` and kill the process.
+#### Client
+The client is very simple and implement a simple gRPC client. Note that:
+* The client uses blocking stub (although non of the server RPCs is blocking).
+* A transaction may denied due to lack of space in the server transaction pool.
+* The `add` action only adds the transaction to the transaction pool, and it may took a while 
+    to add the transaction to the Blockchain.
+* Hence, even if `get` failed, it might be either because the transaction was never submitted or because it has not 
+added to the Blockchain yet.
