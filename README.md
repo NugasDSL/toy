@@ -8,6 +8,8 @@ the cost of handling failures among all rounds, creating a robust, scalable and 
 Toy assume a Byzantine partial synchronous environment in which the number of faulty nodes, _f_ is less then third of the nodes.
 _Partial synchronous_ means that after an unknown time _t_ there is an unknown upper bound _k_ on the messages transfer delays.
 
+### Related Work
+Toy currently uses [bft-SMaRt](https://github.com/bft-smart/library) as an underlying platform to tolerate the non-optimistic scenarios  
 ### Papers
 This work is an implementation of the TOY algorithm described in TBA
 
@@ -24,5 +26,52 @@ This work is an implementation of the TOY algorithm described in TBA
 1. You may now use this jar to create a _TOY_ server
 
 ## Configurations
+An example configuration can be found under `toy/conf`
+### bft-SMaRt Configuration
+Toy uses bft-SMaRt as an underlying platform in three different modules (_bbc_, _panic_ and _sync_). Hence, Toy configuration should include
+three different configuration directories - each one for each module. 
+
+A deeper explanaiton of bft-SMaRt configuration can be found [here](https://github.com/bft-smart/library/wiki/BFT-SMaRt-Configuration)
+### Toy Configuration
+Below we list a basic configuration for a single local Toy server
+
+```title = "configuration"
+[system]
+    n = 1
+    f = 0
+    c = 1
+    testing = true
+    txSize = 512
+
+[setting]
+    tmo = 1000
+    tmoInterval = 100
+    rmfBbcConfigPath = "path/to/bftsmart/configuration/directory/for/bbc"
+    panicRBroadcastConfigPath = "path/to/bftsmart/configuration/directory/for/panic"
+    syncRBroadcastConfigPath = "path/to/bftsmart/configuration/directory/for/sync"
+    maxTransactionInBlock = 1000
+    caRootPath = "path/to/root/ca/certificate"
+    fastMode = true
+
+[server]
+    privateKey = """MIGNAgEAMBAGByqGSM49AgEGBSuBBAAKBHYwdAIBAQQg/ngTdAL+eZOyh4lilm6djqsl
+                    RDHT5C60eLxRcEoNjAGgBwYFK4EEAAqhRANCAASeFQqtyOwJcJtYceofW2TeNg7rJBlW
+                    L28GZn+tk32fz95JqVS3+iF6JdoM1clkRFLliyXSxEnS1iO4wzRKGQwm"""
+
+    publicKey = """MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEnhUKrcjsCXCbWHHqH1tk3jYO6yQZVi9vBmZ/rZ
+                    N9n8/eSalUt/oheiXaDNXJZERS5Ysl0sRJ0tYjuMM0ShkMJg=="""
+
+    TlsPrivKeyPath = "path/to/privatekey/file"
+    TlsCertPath = "path/to/certificate/file"
+[[cluster]]
+
+    [cluster.s0]
+        id = 0
+        ip = "127.0.0.1"
+        port = 20000
+        publicKey ="""MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEnhUKrcjsCXCbWHHqH1tk3jYO6yQZVi9vBmZ/rZ
+                       N9n8/eSalUt/oheiXaDNXJZERS5Ysl0sRJ0tYjuMM0ShkMJg=="""
+
+```
     
     
