@@ -32,7 +32,7 @@ public class ViewController {
     protected View currentView = null;
     private TOMConfiguration staticConf;
     private ViewStorage viewStore;
-    private String configHome = "config";
+    private String configHome = "toy/config";
 
     public ViewController(int procId) {
         this.staticConf = new TOMConfiguration(procId);

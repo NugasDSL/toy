@@ -38,9 +38,9 @@ public class HostsConfig {
             String sep = System.getProperty("file.separator");
             if(configHome.equals("")){
                    if (fileName.equals(""))
-                        path = "config"+sep+"hosts.config";
+                        path = "toy/config" +sep+"hosts.config";
                    else
-                        path = "config"+sep+fileName;
+                        path = "toy/config" +sep+fileName;
             }else{
                    if (fileName.equals(""))
                         path = configHome+sep+"hosts.config";

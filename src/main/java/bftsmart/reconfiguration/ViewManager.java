@@ -40,7 +40,7 @@ public class ViewManager {
     private List<Integer> addIds = new LinkedList<Integer>();
 
     public ViewManager() {
-        this("config");
+        this("toy/config");
     }
 
     public ViewManager(String configHome) {
@@ -58,7 +58,7 @@ public class ViewManager {
             String path = "";
             String sep = System.getProperty("file.separator");
             if (configHome == null || configHome.equals("")) {
-                path = "config" + sep + "system.config";
+                path = "toy/config" + sep + "system.config";
             } else {
                 path = configHome + sep + "system.config";
             }

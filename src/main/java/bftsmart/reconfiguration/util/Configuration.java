@@ -206,7 +206,7 @@ public class Configuration {
         configs = new Hashtable<String, String>();
         try{
             if(configHome == null || configHome.equals("")){
-                configHome="config";
+                configHome= "toy/config";
             }
             String sep = System.getProperty("file.separator");
             String path =  configHome+sep+"system.config";

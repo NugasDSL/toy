@@ -62,7 +62,7 @@ public class RSAKeyLoader {
                 this.id = id;
                 this.defaultKeys = defaultKeys;
 		if (configHome.equals("")) {
-			path = "config" + System.getProperty("file.separator") + "keys" +
+			path = "toy/config" + System.getProperty("file.separator") + "keys" +
 					System.getProperty("file.separator");
 		} else {
 			path = configHome + System.getProperty("file.separator") + "keys" +

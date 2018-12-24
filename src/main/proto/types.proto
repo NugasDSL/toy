@@ -1,5 +1,5 @@
 syntax = "proto3";
-option java_package = "proto";
+option java_package = "toy.proto";
 package proto;
 
 

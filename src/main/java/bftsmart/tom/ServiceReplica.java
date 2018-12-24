@@ -101,7 +101,7 @@ public class ServiceReplica {
      * @param verifier Requests verifier
      */
     public ServiceReplica(int id, Executable executor, Recoverable recoverer, RequestVerifier verifier) {
-        this(id, "config", executor, recoverer, verifier, new DefaultReplier());
+        this(id, "toy/config", executor, recoverer, verifier, new DefaultReplier());
     }
     
     /**
@@ -114,7 +114,7 @@ public class ServiceReplica {
      * @param replier Replier
      */
     public ServiceReplica(int id, Executable executor, Recoverable recoverer, RequestVerifier verifier, Replier replier) {
-        this(id, "config", executor, recoverer, verifier, replier);
+        this(id, "toy/config", executor, recoverer, verifier, replier);
     }
     /**
      * Constructor

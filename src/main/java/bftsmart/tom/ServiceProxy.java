@@ -65,7 +65,7 @@ public class ServiceProxy extends TOMSender {
 	 * @see @bellow
 	 */
 	public ServiceProxy(int processId) {
-		this(processId, "config", null, null);
+		this(processId, "toy/config", null, null);
 	}
 
 	/**

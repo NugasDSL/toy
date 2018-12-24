@@ -50,7 +50,7 @@ public class RSAKeyPairGenerator {
     }
     
     private void saveToFile(int id, PublicKey puk, PrivateKey prk) throws Exception {
-        String path = "config"+ System.getProperty("file.separator")+"keys"+
+        String path = "toy/config" + System.getProperty("file.separator")+"keys"+
                 System.getProperty("file.separator");
         
         BufferedWriter w = new BufferedWriter(new FileWriter(path+"publickey"+id,false));
