@@ -36,7 +36,7 @@ Deeper explanation of bft-SMaRt configuration can be found [here](https://github
 #### Toy Configuration
 Toy configuration is consist of a single `config.toml` file that describes Toy's settings as well as the paths to bft-SMaRt's configurations.
 
-More about Toy's configuration can be found in the WiKi [citeciteicite].
+More about Toy's configuration can be found in the [WiKi](https://github.com/NugasDSL/toy/wiki/Configuration).
 
 ### Example
 We now expline the example provaided in `src/main/java/toy/examples`. The example establishes a simple client/server Blockchain application 
@@ -143,7 +143,7 @@ The server is implemented in `ServerApp.java` and uses gRPC for client\server co
 The client implements a simple gRPC client. Note that:
 * The client uses blocking stub (although non of the server RPCs is blocking).
 * A transaction may denied due to lack of space in the server transaction pool.
-* The `add` action only adds the transaction to the transaction pool, and it may took a while 
-    to add the transaction to the Blockchain.
+* The `add` action only adds a transaction to the transaction pool, and it may took a while 
+    to add it to the Blockchain.
 * Hence, even if `get` failed, it might be either because the transaction was never submitted or because it has not 
 added to the Blockchain yet.
