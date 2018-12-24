@@ -26,14 +26,14 @@ This work is an implementation of the TOY algorithm described in TBA
 1. You may now use this jar to create a _TOY_ server
 
 ## Configurations
-An example configuration can be found under `toy/conf`
+An example configuration can be found under `conf/`
 ### bft-SMaRt Configuration
 Toy uses bft-SMaRt as an underlying platform in three different modules (_bbc_, _panic_ and _sync_). Hence, Toy configuration should include
 three different configuration directories - each one for each module. 
 
 A deeper explanaiton of bft-SMaRt configuration can be found [here](https://github.com/bft-smart/library/wiki/BFT-SMaRt-Configuration)
 ### Toy Configuration
-Below we list a basic configuration for a single local Toy server
+Below is listed a basic configuration for a single local Toy server
 
 ```title = "configuration"
 [system]
