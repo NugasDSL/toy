@@ -3,8 +3,8 @@
 
 package toy.proto;
 
-public final class BlockchainService {
-  private BlockchainService() {}
+public final class BlockchainServiceOuterClass {
+  private BlockchainServiceOuterClass() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -24,7 +24,7 @@ public final class BlockchainService {
   static {
     java.lang.String[] descriptorData = {
       "\n\027blockchainService.proto\022\005proto\032\013types." +
-      "proto2~\n\021blockchainService\0227\n\016addTransac" +
+      "proto2~\n\021BlockchainService\0227\n\016addTransac" +
       "tion\022\022.proto.Transaction\032\017.proto.accepte" +
       "d\"\000\0220\n\016getTransaction\022\013.proto.read\032\017.pro" +
       "to.approved\"\000B\013\n\ttoy.protob\006proto3"

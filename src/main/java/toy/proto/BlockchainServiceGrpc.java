@@ -20,11 +20,11 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.13.1)",
     comments = "Source: blockchainService.proto")
-public final class blockchainServiceGrpc {
+public final class BlockchainServiceGrpc {
 
-  private blockchainServiceGrpc() {}
+  private BlockchainServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "proto.blockchainService";
+  public static final String SERVICE_NAME = "proto.BlockchainService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<toy.proto.Types.Transaction,
@@ -33,20 +33,20 @@ public final class blockchainServiceGrpc {
   public static io.grpc.MethodDescriptor<toy.proto.Types.Transaction,
       toy.proto.Types.accepted> getAddTransactionMethod() {
     io.grpc.MethodDescriptor<toy.proto.Types.Transaction, toy.proto.Types.accepted> getAddTransactionMethod;
-    if ((getAddTransactionMethod = blockchainServiceGrpc.getAddTransactionMethod) == null) {
-      synchronized (blockchainServiceGrpc.class) {
-        if ((getAddTransactionMethod = blockchainServiceGrpc.getAddTransactionMethod) == null) {
-          blockchainServiceGrpc.getAddTransactionMethod = getAddTransactionMethod = 
+    if ((getAddTransactionMethod = BlockchainServiceGrpc.getAddTransactionMethod) == null) {
+      synchronized (BlockchainServiceGrpc.class) {
+        if ((getAddTransactionMethod = BlockchainServiceGrpc.getAddTransactionMethod) == null) {
+          BlockchainServiceGrpc.getAddTransactionMethod = getAddTransactionMethod = 
               io.grpc.MethodDescriptor.<toy.proto.Types.Transaction, toy.proto.Types.accepted>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "proto.blockchainService", "addTransaction"))
+                  "proto.BlockchainService", "addTransaction"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Transaction.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.accepted.getDefaultInstance()))
-                  .setSchemaDescriptor(new blockchainServiceMethodDescriptorSupplier("addTransaction"))
+                  .setSchemaDescriptor(new BlockchainServiceMethodDescriptorSupplier("addTransaction"))
                   .build();
           }
         }
@@ -60,20 +60,20 @@ public final class blockchainServiceGrpc {
   public static io.grpc.MethodDescriptor<toy.proto.Types.read,
       toy.proto.Types.approved> getGetTransactionMethod() {
     io.grpc.MethodDescriptor<toy.proto.Types.read, toy.proto.Types.approved> getGetTransactionMethod;
-    if ((getGetTransactionMethod = blockchainServiceGrpc.getGetTransactionMethod) == null) {
-      synchronized (blockchainServiceGrpc.class) {
-        if ((getGetTransactionMethod = blockchainServiceGrpc.getGetTransactionMethod) == null) {
-          blockchainServiceGrpc.getGetTransactionMethod = getGetTransactionMethod = 
+    if ((getGetTransactionMethod = BlockchainServiceGrpc.getGetTransactionMethod) == null) {
+      synchronized (BlockchainServiceGrpc.class) {
+        if ((getGetTransactionMethod = BlockchainServiceGrpc.getGetTransactionMethod) == null) {
+          BlockchainServiceGrpc.getGetTransactionMethod = getGetTransactionMethod = 
               io.grpc.MethodDescriptor.<toy.proto.Types.read, toy.proto.Types.approved>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "proto.blockchainService", "getTransaction"))
+                  "proto.BlockchainService", "getTransaction"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.read.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.approved.getDefaultInstance()))
-                  .setSchemaDescriptor(new blockchainServiceMethodDescriptorSupplier("getTransaction"))
+                  .setSchemaDescriptor(new BlockchainServiceMethodDescriptorSupplier("getTransaction"))
                   .build();
           }
         }
@@ -84,29 +84,29 @@ public final class blockchainServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static blockchainServiceStub newStub(io.grpc.Channel channel) {
-    return new blockchainServiceStub(channel);
+  public static BlockchainServiceStub newStub(io.grpc.Channel channel) {
+    return new BlockchainServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static blockchainServiceBlockingStub newBlockingStub(
+  public static BlockchainServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new blockchainServiceBlockingStub(channel);
+    return new BlockchainServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static blockchainServiceFutureStub newFutureStub(
+  public static BlockchainServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new blockchainServiceFutureStub(channel);
+    return new BlockchainServiceFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class blockchainServiceImplBase implements io.grpc.BindableService {
+  public static abstract class BlockchainServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
@@ -144,20 +144,20 @@ public final class blockchainServiceGrpc {
 
   /**
    */
-  public static final class blockchainServiceStub extends io.grpc.stub.AbstractStub<blockchainServiceStub> {
-    private blockchainServiceStub(io.grpc.Channel channel) {
+  public static final class BlockchainServiceStub extends io.grpc.stub.AbstractStub<BlockchainServiceStub> {
+    private BlockchainServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private blockchainServiceStub(io.grpc.Channel channel,
+    private BlockchainServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected blockchainServiceStub build(io.grpc.Channel channel,
+    protected BlockchainServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new blockchainServiceStub(channel, callOptions);
+      return new BlockchainServiceStub(channel, callOptions);
     }
 
     /**
@@ -179,20 +179,20 @@ public final class blockchainServiceGrpc {
 
   /**
    */
-  public static final class blockchainServiceBlockingStub extends io.grpc.stub.AbstractStub<blockchainServiceBlockingStub> {
-    private blockchainServiceBlockingStub(io.grpc.Channel channel) {
+  public static final class BlockchainServiceBlockingStub extends io.grpc.stub.AbstractStub<BlockchainServiceBlockingStub> {
+    private BlockchainServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private blockchainServiceBlockingStub(io.grpc.Channel channel,
+    private BlockchainServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected blockchainServiceBlockingStub build(io.grpc.Channel channel,
+    protected BlockchainServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new blockchainServiceBlockingStub(channel, callOptions);
+      return new BlockchainServiceBlockingStub(channel, callOptions);
     }
 
     /**
@@ -212,20 +212,20 @@ public final class blockchainServiceGrpc {
 
   /**
    */
-  public static final class blockchainServiceFutureStub extends io.grpc.stub.AbstractStub<blockchainServiceFutureStub> {
-    private blockchainServiceFutureStub(io.grpc.Channel channel) {
+  public static final class BlockchainServiceFutureStub extends io.grpc.stub.AbstractStub<BlockchainServiceFutureStub> {
+    private BlockchainServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private blockchainServiceFutureStub(io.grpc.Channel channel,
+    private BlockchainServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected blockchainServiceFutureStub build(io.grpc.Channel channel,
+    protected BlockchainServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new blockchainServiceFutureStub(channel, callOptions);
+      return new BlockchainServiceFutureStub(channel, callOptions);
     }
 
     /**
@@ -253,10 +253,10 @@ public final class blockchainServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final blockchainServiceImplBase serviceImpl;
+    private final BlockchainServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(blockchainServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(BlockchainServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -289,32 +289,32 @@ public final class blockchainServiceGrpc {
     }
   }
 
-  private static abstract class blockchainServiceBaseDescriptorSupplier
+  private static abstract class BlockchainServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    blockchainServiceBaseDescriptorSupplier() {}
+    BlockchainServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return toy.proto.BlockchainService.getDescriptor();
+      return toy.proto.BlockchainServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("blockchainService");
+      return getFileDescriptor().findServiceByName("BlockchainService");
     }
   }
 
-  private static final class blockchainServiceFileDescriptorSupplier
-      extends blockchainServiceBaseDescriptorSupplier {
-    blockchainServiceFileDescriptorSupplier() {}
+  private static final class BlockchainServiceFileDescriptorSupplier
+      extends BlockchainServiceBaseDescriptorSupplier {
+    BlockchainServiceFileDescriptorSupplier() {}
   }
 
-  private static final class blockchainServiceMethodDescriptorSupplier
-      extends blockchainServiceBaseDescriptorSupplier
+  private static final class BlockchainServiceMethodDescriptorSupplier
+      extends BlockchainServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    blockchainServiceMethodDescriptorSupplier(String methodName) {
+    BlockchainServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -329,11 +329,11 @@ public final class blockchainServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (blockchainServiceGrpc.class) {
+      synchronized (BlockchainServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new blockchainServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new BlockchainServiceFileDescriptorSupplier())
               .addMethod(getAddTransactionMethod())
               .addMethod(getGetTransactionMethod())
               .build();

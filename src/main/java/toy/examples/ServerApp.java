@@ -4,14 +4,14 @@ import io.grpc.netty.NettyServerBuilder;
 import io.grpc.stub.StreamObserver;
 import toy.config.Config;
 import toy.proto.Types;
-import toy.proto.blockchainServiceGrpc;
+import toy.proto.BlockchainServiceGrpc;
 import toy.servers.CTServer;
 import toy.servers.ToyServer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ServerApp extends blockchainServiceGrpc.blockchainServiceImplBase {
+public class ServerApp extends BlockchainServiceGrpc.BlockchainServiceImplBase {
     private static org.apache.log4j.Logger logger;
     private int port;
     private Server reqReciever;

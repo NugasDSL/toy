@@ -19,12 +19,12 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.13.1)",
-    comments = "Source: rmfService.proto")
-public final class RmfGrpc {
+    comments = "Source: wrbService.proto")
+public final class WrbGrpc {
 
-  private RmfGrpc() {}
+  private WrbGrpc() {}
 
-  public static final String SERVICE_NAME = "proto.Rmf";
+  public static final String SERVICE_NAME = "proto.Wrb";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<toy.proto.Types.Block,
@@ -33,20 +33,20 @@ public final class RmfGrpc {
   public static io.grpc.MethodDescriptor<toy.proto.Types.Block,
       toy.proto.Types.Empty> getDisseminateMessageMethod() {
     io.grpc.MethodDescriptor<toy.proto.Types.Block, toy.proto.Types.Empty> getDisseminateMessageMethod;
-    if ((getDisseminateMessageMethod = RmfGrpc.getDisseminateMessageMethod) == null) {
-      synchronized (RmfGrpc.class) {
-        if ((getDisseminateMessageMethod = RmfGrpc.getDisseminateMessageMethod) == null) {
-          RmfGrpc.getDisseminateMessageMethod = getDisseminateMessageMethod = 
+    if ((getDisseminateMessageMethod = WrbGrpc.getDisseminateMessageMethod) == null) {
+      synchronized (WrbGrpc.class) {
+        if ((getDisseminateMessageMethod = WrbGrpc.getDisseminateMessageMethod) == null) {
+          WrbGrpc.getDisseminateMessageMethod = getDisseminateMessageMethod = 
               io.grpc.MethodDescriptor.<toy.proto.Types.Block, toy.proto.Types.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "proto.Rmf", "DisseminateMessage"))
+                  "proto.Wrb", "DisseminateMessage"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Block.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Empty.getDefaultInstance()))
-                  .setSchemaDescriptor(new RmfMethodDescriptorSupplier("DisseminateMessage"))
+                  .setSchemaDescriptor(new WrbMethodDescriptorSupplier("DisseminateMessage"))
                   .build();
           }
         }
@@ -60,20 +60,20 @@ public final class RmfGrpc {
   public static io.grpc.MethodDescriptor<toy.proto.Types.BbcMsg,
       toy.proto.Types.Empty> getFastVoteMethod() {
     io.grpc.MethodDescriptor<toy.proto.Types.BbcMsg, toy.proto.Types.Empty> getFastVoteMethod;
-    if ((getFastVoteMethod = RmfGrpc.getFastVoteMethod) == null) {
-      synchronized (RmfGrpc.class) {
-        if ((getFastVoteMethod = RmfGrpc.getFastVoteMethod) == null) {
-          RmfGrpc.getFastVoteMethod = getFastVoteMethod = 
+    if ((getFastVoteMethod = WrbGrpc.getFastVoteMethod) == null) {
+      synchronized (WrbGrpc.class) {
+        if ((getFastVoteMethod = WrbGrpc.getFastVoteMethod) == null) {
+          WrbGrpc.getFastVoteMethod = getFastVoteMethod = 
               io.grpc.MethodDescriptor.<toy.proto.Types.BbcMsg, toy.proto.Types.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "proto.Rmf", "FastVote"))
+                  "proto.Wrb", "FastVote"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.BbcMsg.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Empty.getDefaultInstance()))
-                  .setSchemaDescriptor(new RmfMethodDescriptorSupplier("FastVote"))
+                  .setSchemaDescriptor(new WrbMethodDescriptorSupplier("FastVote"))
                   .build();
           }
         }
@@ -87,20 +87,20 @@ public final class RmfGrpc {
   public static io.grpc.MethodDescriptor<toy.proto.Types.Req,
       toy.proto.Types.Res> getReqMessageMethod() {
     io.grpc.MethodDescriptor<toy.proto.Types.Req, toy.proto.Types.Res> getReqMessageMethod;
-    if ((getReqMessageMethod = RmfGrpc.getReqMessageMethod) == null) {
-      synchronized (RmfGrpc.class) {
-        if ((getReqMessageMethod = RmfGrpc.getReqMessageMethod) == null) {
-          RmfGrpc.getReqMessageMethod = getReqMessageMethod = 
+    if ((getReqMessageMethod = WrbGrpc.getReqMessageMethod) == null) {
+      synchronized (WrbGrpc.class) {
+        if ((getReqMessageMethod = WrbGrpc.getReqMessageMethod) == null) {
+          WrbGrpc.getReqMessageMethod = getReqMessageMethod = 
               io.grpc.MethodDescriptor.<toy.proto.Types.Req, toy.proto.Types.Res>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "proto.Rmf", "reqMessage"))
+                  "proto.Wrb", "reqMessage"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Req.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   toy.proto.Types.Res.getDefaultInstance()))
-                  .setSchemaDescriptor(new RmfMethodDescriptorSupplier("reqMessage"))
+                  .setSchemaDescriptor(new WrbMethodDescriptorSupplier("reqMessage"))
                   .build();
           }
         }
@@ -111,29 +111,29 @@ public final class RmfGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static RmfStub newStub(io.grpc.Channel channel) {
-    return new RmfStub(channel);
+  public static WrbStub newStub(io.grpc.Channel channel) {
+    return new WrbStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static RmfBlockingStub newBlockingStub(
+  public static WrbBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new RmfBlockingStub(channel);
+    return new WrbBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static RmfFutureStub newFutureStub(
+  public static WrbFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new RmfFutureStub(channel);
+    return new WrbFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class RmfImplBase implements io.grpc.BindableService {
+  public static abstract class WrbImplBase implements io.grpc.BindableService {
 
     /**
      */
@@ -185,20 +185,20 @@ public final class RmfGrpc {
 
   /**
    */
-  public static final class RmfStub extends io.grpc.stub.AbstractStub<RmfStub> {
-    private RmfStub(io.grpc.Channel channel) {
+  public static final class WrbStub extends io.grpc.stub.AbstractStub<WrbStub> {
+    private WrbStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private RmfStub(io.grpc.Channel channel,
+    private WrbStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RmfStub build(io.grpc.Channel channel,
+    protected WrbStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new RmfStub(channel, callOptions);
+      return new WrbStub(channel, callOptions);
     }
 
     /**
@@ -228,20 +228,20 @@ public final class RmfGrpc {
 
   /**
    */
-  public static final class RmfBlockingStub extends io.grpc.stub.AbstractStub<RmfBlockingStub> {
-    private RmfBlockingStub(io.grpc.Channel channel) {
+  public static final class WrbBlockingStub extends io.grpc.stub.AbstractStub<WrbBlockingStub> {
+    private WrbBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private RmfBlockingStub(io.grpc.Channel channel,
+    private WrbBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RmfBlockingStub build(io.grpc.Channel channel,
+    protected WrbBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new RmfBlockingStub(channel, callOptions);
+      return new WrbBlockingStub(channel, callOptions);
     }
 
     /**
@@ -268,20 +268,20 @@ public final class RmfGrpc {
 
   /**
    */
-  public static final class RmfFutureStub extends io.grpc.stub.AbstractStub<RmfFutureStub> {
-    private RmfFutureStub(io.grpc.Channel channel) {
+  public static final class WrbFutureStub extends io.grpc.stub.AbstractStub<WrbFutureStub> {
+    private WrbFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private RmfFutureStub(io.grpc.Channel channel,
+    private WrbFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RmfFutureStub build(io.grpc.Channel channel,
+    protected WrbFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new RmfFutureStub(channel, callOptions);
+      return new WrbFutureStub(channel, callOptions);
     }
 
     /**
@@ -318,10 +318,10 @@ public final class RmfGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RmfImplBase serviceImpl;
+    private final WrbImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RmfImplBase serviceImpl, int methodId) {
+    MethodHandlers(WrbImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -358,32 +358,32 @@ public final class RmfGrpc {
     }
   }
 
-  private static abstract class RmfBaseDescriptorSupplier
+  private static abstract class WrbBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    RmfBaseDescriptorSupplier() {}
+    WrbBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return toy.proto.RmfService.getDescriptor();
+      return toy.proto.WrbService.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Rmf");
+      return getFileDescriptor().findServiceByName("Wrb");
     }
   }
 
-  private static final class RmfFileDescriptorSupplier
-      extends RmfBaseDescriptorSupplier {
-    RmfFileDescriptorSupplier() {}
+  private static final class WrbFileDescriptorSupplier
+      extends WrbBaseDescriptorSupplier {
+    WrbFileDescriptorSupplier() {}
   }
 
-  private static final class RmfMethodDescriptorSupplier
-      extends RmfBaseDescriptorSupplier
+  private static final class WrbMethodDescriptorSupplier
+      extends WrbBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    RmfMethodDescriptorSupplier(String methodName) {
+    WrbMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -398,11 +398,11 @@ public final class RmfGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (RmfGrpc.class) {
+      synchronized (WrbGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new RmfFileDescriptorSupplier())
+              .setSchemaDescriptor(new WrbFileDescriptorSupplier())
               .addMethod(getDisseminateMessageMethod())
               .addMethod(getFastVoteMethod())
               .addMethod(getReqMessageMethod())

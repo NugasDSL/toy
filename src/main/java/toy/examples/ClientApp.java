@@ -3,7 +3,7 @@ import com.google.protobuf.ByteString;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import toy.proto.Types;
-import toy.proto.blockchainServiceGrpc;
+import toy.proto.BlockchainServiceGrpc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,14 @@ import static java.lang.String.format;
 
 public class ClientApp {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ClientApp.class);
-    private blockchainServiceGrpc.blockchainServiceBlockingStub stub;
+    private BlockchainServiceGrpc.BlockchainServiceBlockingStub stub;
     private ManagedChannel channel;
     private int clientID;
 
     public ClientApp(int clientID, String addr, int port) {
         this.clientID = clientID;
         channel = ManagedChannelBuilder.forAddress(addr, port).usePlaintext().build();
-        stub = blockchainServiceGrpc.newBlockingStub(channel);
+        stub = BlockchainServiceGrpc.newBlockingStub(channel);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
     }
 

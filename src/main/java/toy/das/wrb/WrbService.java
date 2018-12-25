@@ -12,8 +12,8 @@ import io.grpc.netty.NettyServerBuilder;
 import io.grpc.stub.StreamObserver;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import toy.proto.RmfGrpc;
 import toy.proto.Types;
+import toy.proto.WrbGrpc;
 
 import javax.net.ssl.SSLException;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
 import static java.lang.Math.max;
 import static java.lang.String.format;
 
-public class WrbService extends RmfGrpc.RmfImplBase {
+public class WrbService extends WrbGrpc.WrbImplBase {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(WrbService.class);
     class authInterceptor implements ServerInterceptor {
         @Override
@@ -84,7 +84,7 @@ public class WrbService extends RmfGrpc.RmfImplBase {
     }
     class peer {
         ManagedChannel channel;
-        RmfGrpc.RmfStub stub;
+        WrbGrpc.WrbStub stub;
 
         peer(Node node) {
             try {
@@ -95,7 +95,7 @@ public class WrbService extends RmfGrpc.RmfImplBase {
             } catch (SSLException e) {
                 logger.fatal(format("[#%d]", id), e);
             }
-            stub = RmfGrpc.newStub(channel);
+            stub = WrbGrpc.newStub(channel);
         }
 
         void shutdown() {
@@ -252,7 +252,7 @@ public class WrbService extends RmfGrpc.RmfImplBase {
         logger.info(format("[#%d] shutting down wrb service", id));
     }
 
-    void sendDataMessage(RmfGrpc.RmfStub stub, Types.Block msg) {
+    void sendDataMessage(WrbGrpc.WrbStub stub, Types.Block msg) {
         stub.disseminateMessage(msg, new StreamObserver<Types.Empty>() {
             @Override
             public void onNext(Types.Empty ans) {
@@ -271,7 +271,7 @@ public class WrbService extends RmfGrpc.RmfImplBase {
         });
     }
 
-    private void sendFastVoteMessage(RmfGrpc.RmfStub stub, Types.BbcMsg v) {
+    private void sendFastVoteMessage(WrbGrpc.WrbStub stub, Types.BbcMsg v) {
         stub.fastVote(v, new StreamObserver<Types.Empty>() {
             @Override
             public void onNext(Types.Empty empty) {
@@ -289,7 +289,7 @@ public class WrbService extends RmfGrpc.RmfImplBase {
             }
         });
     }
-    private void sendReqMessage(RmfGrpc.RmfStub stub, Types.Req req, int channel, int cidSeries, int cid, int sender, int height) {
+    private void sendReqMessage(WrbGrpc.WrbStub stub, Types.Req req, int channel, int cidSeries, int cid, int sender, int height) {
         stub.reqMessage(req, new StreamObserver<Types.Res>() {
             @Override
             public void onNext(Types.Res res) {

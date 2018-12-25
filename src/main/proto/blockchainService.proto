@@ -5,7 +5,7 @@ package proto;
 
 import "types.proto";
 
-service blockchainService {
+service BlockchainService {
     rpc addTransaction(Transaction) returns (accepted) {};
     rpc getTransaction(read) returns (approved) {};
 }
