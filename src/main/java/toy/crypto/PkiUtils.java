@@ -3,6 +3,10 @@ package toy.crypto;
 import toy.config.Config;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -39,14 +43,24 @@ public class PkiUtils {
         }
     }
 
-    static void generateKeyPair() throws NoSuchProviderException, NoSuchAlgorithmException, InvalidAlgorithmParameterException {
+    static public void generateKeyPair(String outputPath) throws NoSuchProviderException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, IOException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("ECDSA", "BC");
         keyPairGenerator.initialize(new ECGenParameterSpec("secp256k1"), new SecureRandom());
         java.security.KeyPair keyPair = keyPairGenerator.generateKeyPair();
         PrivateKey privateKey = keyPair.getPrivate();
+        System.out.println("privateKey\n-----------");
         System.out.println(new String(Base64.getEncoder().encode(privateKey.getEncoded())));
+        System.out.println("-----------");
         PublicKey publicKey = keyPair.getPublic();
+        System.out.println("publicKey\n-----------");
         System.out.println(new String(Base64.getEncoder().encode(publicKey.getEncoded())));
+        System.out.println("-----------");
+        Files.createDirectories(Paths.get(outputPath));
+        Path privPath = Paths.get(outputPath, "priv.key");
+        Files.write(privPath, new String(Base64.getEncoder().encode(privateKey.getEncoded())).getBytes());
+        Path pubPath = Paths.get(outputPath, "pub.key");
+        Files.write(pubPath, new String(Base64.getEncoder().encode(publicKey.getEncoded())).getBytes());
+
     }
 
     static public String sign(String plainText) {

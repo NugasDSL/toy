@@ -7148,15 +7148,15 @@ public final class Types {
     toy.proto.Types.TransactionOrBuilder getTxOrBuilder();
 
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     boolean hasSt();
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     toy.proto.Types.blockStatistics getSt();
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     toy.proto.Types.blockStatisticsOrBuilder getStOrBuilder();
   }
@@ -7219,7 +7219,7 @@ public final class Types {
 
               break;
             }
-            case 26: {
+            case 18: {
               toy.proto.Types.blockStatistics.Builder subBuilder = null;
               if (st_ != null) {
                 subBuilder = st_.toBuilder();
@@ -7277,22 +7277,22 @@ public final class Types {
       return getTx();
     }
 
-    public static final int ST_FIELD_NUMBER = 3;
+    public static final int ST_FIELD_NUMBER = 2;
     private toy.proto.Types.blockStatistics st_;
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     public boolean hasSt() {
       return st_ != null;
     }
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     public toy.proto.Types.blockStatistics getSt() {
       return st_ == null ? toy.proto.Types.blockStatistics.getDefaultInstance() : st_;
     }
     /**
-     * <code>.proto.blockStatistics st = 3;</code>
+     * <code>.proto.blockStatistics st = 2;</code>
      */
     public toy.proto.Types.blockStatisticsOrBuilder getStOrBuilder() {
       return getSt();
@@ -7314,7 +7314,7 @@ public final class Types {
         output.writeMessage(1, getTx());
       }
       if (st_ != null) {
-        output.writeMessage(3, getSt());
+        output.writeMessage(2, getSt());
       }
       unknownFields.writeTo(output);
     }
@@ -7330,7 +7330,7 @@ public final class Types {
       }
       if (st_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getSt());
+          .computeMessageSize(2, getSt());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7745,13 +7745,13 @@ public final class Types {
       private com.google.protobuf.SingleFieldBuilderV3<
           toy.proto.Types.blockStatistics, toy.proto.Types.blockStatistics.Builder, toy.proto.Types.blockStatisticsOrBuilder> stBuilder_;
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public boolean hasSt() {
         return stBuilder_ != null || st_ != null;
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public toy.proto.Types.blockStatistics getSt() {
         if (stBuilder_ == null) {
@@ -7761,7 +7761,7 @@ public final class Types {
         }
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public Builder setSt(toy.proto.Types.blockStatistics value) {
         if (stBuilder_ == null) {
@@ -7777,7 +7777,7 @@ public final class Types {
         return this;
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public Builder setSt(
           toy.proto.Types.blockStatistics.Builder builderForValue) {
@@ -7791,7 +7791,7 @@ public final class Types {
         return this;
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public Builder mergeSt(toy.proto.Types.blockStatistics value) {
         if (stBuilder_ == null) {
@@ -7809,7 +7809,7 @@ public final class Types {
         return this;
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public Builder clearSt() {
         if (stBuilder_ == null) {
@@ -7823,7 +7823,7 @@ public final class Types {
         return this;
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public toy.proto.Types.blockStatistics.Builder getStBuilder() {
         
@@ -7831,7 +7831,7 @@ public final class Types {
         return getStFieldBuilder().getBuilder();
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       public toy.proto.Types.blockStatisticsOrBuilder getStOrBuilder() {
         if (stBuilder_ != null) {
@@ -7842,7 +7842,7 @@ public final class Types {
         }
       }
       /**
-       * <code>.proto.blockStatistics st = 3;</code>
+       * <code>.proto.blockStatistics st = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           toy.proto.Types.blockStatistics, toy.proto.Types.blockStatistics.Builder, toy.proto.Types.blockStatisticsOrBuilder> 
@@ -12783,7 +12783,7 @@ public final class Types {
       " \001(\003\022\020\n\010serverTs\030\005 \001(\003\"7\n\010accepted\022\020\n\010ac" +
       "cepted\030\001 \001(\010\022\031\n\004txID\030\002 \001(\0132\013.proto.txID\"" +
       "N\n\010approved\022\036\n\002tx\030\001 \001(\0132\022.proto.Transact" +
-      "ion\022\"\n\002st\030\003 \001(\0132\026.proto.blockStatistics\"" +
+      "ion\022\"\n\002st\030\002 \001(\0132\026.proto.blockStatistics\"" +
       "!\n\004read\022\031\n\004txID\030\001 \001(\0132\013.proto.txID\"S\n\tFo" +
       "rkProof\022\016\n\006sender\030\001 \001(\005\022\032\n\004curr\030\002 \001(\0132\014." +
       "proto.Block\022\032\n\004prev\030\004 \001(\0132\014.proto.Block\"" +

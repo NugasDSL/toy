@@ -5,7 +5,7 @@ Toy is a total ordering optimistic system targeting permissioned Blockchains. It
 the cost of handling failures among all rounds, creating a robust, scalable and highly efficient Blockchain platform.
 
 ### System Model
-Toy assume a Byzantine partial synchronous environment in which the number of faulty nodes, _f_ is less then third of the nodes.
+Toy assumes a Byzantine partial synchronous environment in which the number of faulty nodes, _f_ is less then third of the nodes.
 _Partial synchronous_ means that after an unknown time _t_ there is an unknown upper bound _k_ on the messages transfer delays.
 
 ### Related Work
@@ -23,7 +23,6 @@ This work is an implementation of the TOY algorithm described in TBA
 1. Go to the project directory and run:
     * `mvn package`
 1. `lib/toy-core-1.0.jar` will be created under the project directory.
-1. You may now use this jar to create a _Toy_ server.
 
 ### Configurations
 An example configuration can be found under `conf/`
