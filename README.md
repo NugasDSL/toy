@@ -131,10 +131,10 @@ The server is implemented in `ServerApp.java` and uses gRPC for client\server co
     * Note that `getTransaction` is not very efficient as for every request it goes over the whole Blockchain.
         Of course, different and more efficient design choices but, in this example,
         due to its simplicity we preferred the above.
-1. Finally, we implement the main method. It expect 2 ot 3 parameters: 
+1. Finally, we implement the main method. It expect 2 or 3 parameters: 
     1. The server ID. Each server should have an ID that is corresponding to the one that specified in `config.toml`.
     1. The port to which the client should connect.
-    1. Optionally, a path to `config.toml`. If this parameter is missing, ToyServer expects to find it at 
+    1. Optionally, a path to `config.toml`. If this parameter is missing, ToyServer expects to find configuration at 
         `src\main\resources\config.toml`
     ```
     public static void main(String argv[]) {
