@@ -17,6 +17,32 @@
             </extension>
         </extensions>
         <plugins>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-run-script</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>bin</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>.</directory>
+                                    <filtering>true</filtering>
+                                    <includes>keysGenerator.sh</includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
@@ -41,6 +67,33 @@
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
+
+                    <execution>
+
+                        <id>make-assembly-client</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+
+                        <configuration>
+                            <outputDirectory>
+                                bin/
+                            </outputDirectory>
+                            <archive>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <mainClass>toy.app.keysGenerator</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>keysGenerator</finalName>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
             <plugin>

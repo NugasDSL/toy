@@ -9,7 +9,7 @@ public class keysGenerator {
     public static void main(String argv[]) {
         String serverID = argv[0];
         try {
-            PkiUtils.generateKeyPair("generatedKeys/" + serverID);
+            PkiUtils.generateKeyPair("../generatedKeys/" + serverID);
         } catch (NoSuchProviderException | NoSuchAlgorithmException |
                 InvalidAlgorithmParameterException | IOException e) {
             e.printStackTrace();
