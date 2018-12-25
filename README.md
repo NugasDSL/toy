@@ -37,6 +37,17 @@ Toy configuration is consist of a single `config.toml` file that describes Toy's
 
 More about Toy's configuration can be found in the [WiKi](https://github.com/NugasDSL/toy/wiki/Configuration).
 
+#### Generating Key Pair
+Toy requires messages to be signed and use an ECDSA with the `secp256k1` curve to sign them. You must specify in `config.toml`
+for each server its public key. 
+
+To generate a key pair run:
+
+```
+./bin/keysGenerator.sh $ID
+```
+where `$ID` is the server id. The keys will generated under `generatedKeys/$ID/priv.key` and `generatedKeys/$ID/priv.key`.
+You should copy the keys to `config.toml`.
 ### Example
 We now expline the example provaided in `src/main/java/toy/examples`. The example establishes a simple client/server Blockchain application 
 using Toy library.
