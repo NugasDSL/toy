@@ -595,21 +595,4 @@ public abstract class ToyServer extends Node implements Server {
     public int getBCSize() {
         return max(bc.getHeight() - (f + 2), 0);
     }
-
-
-    @Override
-    public void setByzSetting(boolean fullByz, List<List<Integer>> groups) {
-
-    }
-
-    @Override
-    public void setAsyncParam(int time) {
-
-    }
-
-    @Override
-    public Statistics getStatistics() {
-        return null;
-    }
-
 }
