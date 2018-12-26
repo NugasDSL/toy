@@ -5,6 +5,9 @@ import toy.proto.Types;
 
 import java.util.Arrays;
 
+/**
+ * A class that implements the digital signature of blocks.
+ */
 public class BlockDS implements DigitalSignature {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(BlockDS.class);
     @Override
@@ -31,10 +34,21 @@ public class BlockDS implements DigitalSignature {
                         new String(header.getTransactionHash().toByteArray()), header.getProof());
     }
 
+    /**
+     * Verify the signature of a given signer on a given block.
+     * @param id the signer node ID
+     * @param b the block to be verified
+     * @return true if valid, false if not
+     */
     public static boolean verify(int id, Types.Block b) {
         return new BlockDS().verifyMessage(id, b);
     }
 
+    /**
+     * Sign on a given block.
+     * @param b the block to sign on
+     * @return a string that represents the signature
+     */
     public static String sign(Types.BlockHeader b) {
         return new BlockDS().signMessage(b);
     }

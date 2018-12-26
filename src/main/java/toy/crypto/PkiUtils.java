@@ -16,6 +16,9 @@ import java.util.HashMap;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+/**
+ * A class that implements the logic of the PKI infrastructure.
+ */
 public class PkiUtils {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(PkiUtils.class);
     private static PrivateKey privKey;
@@ -43,6 +46,14 @@ public class PkiUtils {
         }
     }
 
+    /**
+     * Generates key pair using ECDSA with the secp256k1 curve.
+     * @param outputPath the path where the signatures will be generated
+     * @throws NoSuchProviderException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws IOException
+     */
     static public void generateKeyPair(String outputPath) throws NoSuchProviderException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, IOException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("ECDSA", "BC");
         keyPairGenerator.initialize(new ECGenParameterSpec("secp256k1"), new SecureRandom());
@@ -63,6 +74,11 @@ public class PkiUtils {
 
     }
 
+    /**
+     * Sign on a given message.
+     * @param plainText the message to be signed
+     * @return a string that encodes the signature
+     */
     static public String sign(String plainText) {
         synchronized (globalLock) {
             try {
@@ -76,6 +92,13 @@ public class PkiUtils {
         return null;
     }
 
+    /**
+     * Verifies a signature of a given signer on a given message.
+     * @param id the signer ID
+     * @param plainText the original message
+     * @param signature the message signature
+     * @return true if valid, false if not
+     */
    static public boolean verify(int id, String plainText, String signature)  {
         synchronized (globalLock) {
             Signature publicSignature = clusterPubKeys.get(id);

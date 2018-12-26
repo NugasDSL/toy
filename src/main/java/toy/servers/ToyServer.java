@@ -63,7 +63,7 @@ public abstract class ToyServer extends Node implements Server {
     int cID = new Random().nextInt(10000);
 
     /**
-     * Toy server constructor
+     * Toy server constructor.
      * @param addr the ip of the server
      * @param wrbPort the port on which it receives new blocks
      * @param id server ID
@@ -112,7 +112,7 @@ public abstract class ToyServer extends Node implements Server {
     }
 
     /**
-     * Toy server constructor
+     * Toy server constructor.
      * @param addr the ip of the server
      * @param wrbPort the port on which it receives new blocks
      * @param id server ID

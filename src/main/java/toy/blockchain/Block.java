@@ -11,29 +11,35 @@ import toy.proto.Types.Transaction;
 
 import java.util.ArrayList;
 
+/**
+ * An abstract class the every implementation of block should implement.
+ */
 public abstract class Block {
     public Types.Block.Builder blockBuilder = Types.Block.newBuilder();
 
+    /**
+     * Define the validity of a transaction with respect to the current Blockchain and the current block.
+     * @param t the transaction to be validated
+     * @return true if valid and false if not
+     */
     abstract public boolean validateTransaction(Transaction t);
 
 
+    /**
+     * Get the i_th transaction of the block.
+     * @param index the transaction index to return
+     * @return the index_th transaction
+     */
     public Transaction getTransaction(int index) {
         return blockBuilder.getData(index);
     }
 
-    public ArrayList<Transaction> getAllTransactions() {
-        ArrayList<Transaction> ret = new ArrayList<>();
-        blockBuilder.addAllData(ret);
-        return ret;
-    }
-
-
+    /**
+     * Add transaction to the block.
+     * @param t the transaciton to be added
+     */
     public void addTransaction(Transaction t) {
             blockBuilder.addData(t);
-    }
-
-    public void removeTransaction(int index) {
-        blockBuilder.removeData(index);
     }
 
     public Types.Block construct(int creatorID, int height, int cidSeries, int cid, int channel, BlockHeader header) {
@@ -73,6 +79,10 @@ public abstract class Block {
                 .build();
     }
 
+    /**
+     * Get the current number of transactions.
+     * @return the current number of transactions
+     */
     public int getTransactionCount() {
         return blockBuilder.getDataCount();
     }

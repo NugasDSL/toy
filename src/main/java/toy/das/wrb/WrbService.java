@@ -29,6 +29,9 @@ import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
 import static java.lang.Math.max;
 import static java.lang.String.format;
 
+/**
+ * A class that implements the WRB abstraction.
+ */
 public class WrbService extends WrbGrpc.WrbImplBase {
     private final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(WrbService.class);
     class authInterceptor implements ServerInterceptor {
@@ -188,7 +191,7 @@ public class WrbService extends WrbGrpc.WrbImplBase {
 
     }
 
-    public void start() {
+    void start() {
         CountDownLatch latch = new CountDownLatch(1);
             this.bbcService = new BbcService(channels, id, 2*f + 1, bbcConfig);
             bbcServiceThread = new Thread(() -> {
@@ -228,7 +231,7 @@ public class WrbService extends WrbGrpc.WrbImplBase {
         return optimialDec.get();
     }
 
-    public void shutdown() {
+    void shutdown() {
         stopped.set(true);
         for (peer p : peers.values()) {
             p.shutdown();
@@ -481,7 +484,7 @@ public class WrbService extends WrbGrpc.WrbImplBase {
         }
     }
 
-    public Types.Block deliver(int channel, int cidSeries, int cid, int sender, int height, Types.Block next)
+    Types.Block deliver(int channel, int cidSeries, int cid, int sender, int height, Types.Block next)
             throws InterruptedException
     {
         totalDeliveredTries.getAndIncrement();
@@ -644,7 +647,7 @@ public class WrbService extends WrbGrpc.WrbImplBase {
 
     }
 
-    public void clearBuffers(Types.Meta key) {
+    void clearBuffers(Types.Meta key) {
         int channel = key.getChannel();
 
         recMsg[channel].remove(key);

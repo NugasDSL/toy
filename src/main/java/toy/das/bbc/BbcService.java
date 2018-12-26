@@ -16,6 +16,9 @@ import java.util.concurrent.Semaphore;
 
 import static java.lang.String.format;
 
+/**
+ * This class implements a Byznatine Binary Consensus (BBC) based on Atomic Broadcast OF bft-SMaRt.
+ */
 public class BbcService extends DefaultSingleRecoverable {
     class consVote {
         int pos = 0;
@@ -41,6 +44,13 @@ public class BbcService extends DefaultSingleRecoverable {
     private boolean stopped = false;
     private ConcurrentHashMap<Types.Meta, fastVotePart> fastVote = new ConcurrentHashMap<>();
 
+    /**
+     * Constructor
+     * @param channels the number of channels in the system (with a single Toy group this is always 1)
+     * @param id the server id
+     * @param quorumSize the required quorum size (2f + 1 in the Byznatine settings)
+     * @param configHome a path to bft-SMaRt configuration directory
+     */
     public BbcService(int channels, int id, int quorumSize, String configHome) {
         this.id = id;
         rec = new ConcurrentHashMap<>();
@@ -53,11 +63,18 @@ public class BbcService extends DefaultSingleRecoverable {
         }
     }
 
+    /**
+     * Clearing the buffers from irrelevant messages. This method is called bt <i>gc</i> of ToyServer.
+     * @param key The key of the message to be deleted
+     */
     public void clearBuffers(Types.Meta key) {
         rec.remove(key);
         fastVote.remove(key);
     }
 
+    /**
+     * Starts the service.
+     */
     public void start() {
         sr = new ServiceReplica(id, this, this, configHome);
         bbcProxy = new AsynchServiceProxy(id, configHome);
@@ -70,6 +87,10 @@ public class BbcService extends DefaultSingleRecoverable {
          shutdown();
         }));
     }
+
+    /**
+     * shutdown the service.
+     */
     public void shutdown() {
         stopped = true;
         if (bbcProxy != null) {
@@ -98,7 +119,6 @@ public class BbcService extends DefaultSingleRecoverable {
     @Override
     public byte[] appExecuteOrdered(byte[] command, MessageContext msgCtx) {
         try {
-//            synchronized (globalLock) {
             Types.BbcMsg msg = Types.BbcMsg.parseFrom(command);
             int channel = msg.getM().getChannel();
             int cidSeries = msg.getM().getCidSeries();
@@ -152,6 +172,15 @@ public class BbcService extends DefaultSingleRecoverable {
         return new byte[1];
     }
 
+    /**
+     * Delivers the consensus with (cid, cidSeries) result.
+     * @param channel the channel that wish to decide
+     * @param cidSeries an identifier of the consensus series (series changes due to an invocation of the synchronization
+     *                  mechanism)
+     * @param cid an identifier of the consensus in the given cidSeries
+     * @return the decision
+     * @throws InterruptedException
+     */
     public Types.BbcDecision decide(int channel, int cidSeries, int cid) throws InterruptedException {
             Types.Meta key = Types.Meta.newBuilder()
                     .setCidSeries(cidSeries)
@@ -177,6 +206,15 @@ public class BbcService extends DefaultSingleRecoverable {
                     .build();
     }
 
+    /**
+     * Propose a value in the consensus with (cid, cidSeries).
+     * @param vote the proposal
+     * @param channel the proposer channel (with a single Toy group this is always 0)
+     * @param cidSeries the series of this consensus instance (series changes due to an invocation of the synchronization
+     *                  mechanism)
+     * @param cid the id of this consensus in the given cidSeries
+     * @return
+     */
     public int propose(int vote, int channel, int cidSeries, int cid) {
         Types.BbcMsg msg= Types.BbcMsg.newBuilder()
                 .setM(Types.Meta.newBuilder()
@@ -202,7 +240,10 @@ public class BbcService extends DefaultSingleRecoverable {
         return 0;
     }
 
-
+    /**
+     * An inner method that supports speculative BBC (used by WrbSerivce)
+     * @param b
+     */
     public void updateFastVote(Types.BbcDecision b) {
             Types.Meta key = Types.Meta.newBuilder()
                     .setChannel(b.getM().getChannel())
@@ -224,6 +265,10 @@ public class BbcService extends DefaultSingleRecoverable {
             });
     }
 
+    /**
+     * An inner method that supports speculative BBC (used by WrbSerivce)
+     * @param b
+     */
     public void periodicallyVoteMissingConsensus(Types.BbcDecision b) {
         Types.Meta key = Types.Meta.newBuilder()
                 .setChannel(b.getM().getChannel())

@@ -1,5 +1,8 @@
 package toy.servers;
 
+/**
+ * This class meant to collect statistics of the Toy server performance
+ */
 public class Statistics {
     public int txCount;
     public long firstTxTs;
@@ -12,6 +15,9 @@ public class Statistics {
     public int all = 0;
     public int deliveredTime = 0;
 
+    /**
+     * Default constructor of Statistics
+     */
     public Statistics() {
         txCount = 0;
         firstTxTs = 0;
