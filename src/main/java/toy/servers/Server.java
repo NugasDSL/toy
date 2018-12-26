@@ -3,7 +3,7 @@ import toy.proto.Types;
 import java.util.List;
 
 /**
- * This interface define the method a Toy based server supports.
+ * This interface defines the method a Toy based server supports.
  * To simplify work with different designs (e.g a Top server) every Toy based server should implement this interface.
  * @author Yehontan Buchnik
  */

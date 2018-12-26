@@ -20,6 +20,11 @@ import java.util.stream.Collectors;
 import static java.lang.Math.max;
 import static java.lang.String.format;
 
+/**
+ * An implementation of the base class of a Toy server.
+ * Every specific Toy implementation should derive from this class and implement the leader phase (for example, implement
+ * an asynchronous server)
+ */
 public abstract class ToyServer extends Node implements Server {
     class fpEntry {
         Types.ForkProof fp;
@@ -57,7 +62,20 @@ public abstract class ToyServer extends Node implements Server {
     int txSize = 0;
     int cID = new Random().nextInt(10000);
 
-
+    /**
+     * Toy server constructor
+     * @param addr the ip of the server
+     * @param wrbPort the port on which it receives new blocks
+     * @param id server ID
+     * @param channel the number of channels (with single Toy group it is always 1)
+     * @param f an upper bound on the number of faulty nodes
+     * @param maxTx max transactions per block
+     * @param fastMode indicates to run a single communication step protocol (rhater than two) by piggybacking
+     *                 the next block to the first BBC message
+     * @param wrb an instance of wrb service
+     * @param panic an instance of panic service
+     * @param sync an instance of sync service
+     */
     public ToyServer(String addr, int wrbPort, int id, int channel, int f,
                      int maxTx, boolean fastMode,
                      WrbNode wrb, RBrodcastService panic, RBrodcastService sync) {
@@ -93,6 +111,27 @@ public abstract class ToyServer extends Node implements Server {
         }
     }
 
+    /**
+     * Toy server constructor
+     * @param addr the ip of the server
+     * @param wrbPort the port on which it receives new blocks
+     * @param id server ID
+     * @param channel the number of channels (with a single Toy group it is always 1)
+     * @param f an upper bound on the number of faulty nodes
+     * @param tmo the initial time-out to wait in wrb-deliver
+     * @param tmoInterval the interval to add to tmo in case wrb was failed to deliver the message
+     *                    in a single round
+     * @param maxTx max transactions per block
+     * @param fastMode indicates to run a single communication step protocol (rhater than two) by piggybacking
+     *      *                 the next block to the first BBC message
+     * @param cluster a list of Nodes that compose the network
+     * @param bbcConfig a path to the configuration directory of wrb
+     * @param panicConfig a path to the configuration directory of panic
+     * @param syncConfig a path to the configuration directory of sync
+     * @param serverCrt a path to the server certificate
+     * @param serverPrivKey a path to the server ssl private key
+     * @param caRoot a path to the ca certificate. If equals to "" the server will trust any certificate
+     */
     public ToyServer(String addr, int wrbPort, int id, int channel, int f, int tmo, int tmoInterval,
                      int maxTx, boolean fastMode, ArrayList<Node> cluster,
                      String bbcConfig, String panicConfig, String syncConfig,
@@ -128,6 +167,11 @@ public abstract class ToyServer extends Node implements Server {
         start(false);
     }
 
+    /**
+     * Starts the server as either part of Toys (e.g as with Top) or a single server
+     * @param group indicates if this server is part of group of Toys that collaborate
+     *             wrb, panic and sync services
+     */
     public void start(boolean group) {
         if (!group) {
             wrbServer.start();
@@ -154,6 +198,11 @@ public abstract class ToyServer extends Node implements Server {
         shutdown(false);
     }
 
+    /**
+     * shutdown the server as either part of Toys (e.g as with Top) or a single server
+     * @param group indicates if this server is part of group of Toys that collaborate
+     *              wrb, panic and sync services
+     */
     public void shutdown(boolean group) {
         stopped.set(true);
         logger.debug(format("[#%d-C[%d]] interrupt main thread", getID(), channel));
@@ -205,12 +254,18 @@ public abstract class ToyServer extends Node implements Server {
         }
         logger.info(format("[#%d-C[%d]] shutdown bc Server", getID(), channel));
     }
+
     private void updateLeaderAndHeight() {
         currHeight = bc.getHeight() + 1;
         currLeader = (currLeader + 1) % n;
         cid++;
     }
 
+    /**
+     * Clear the data of block i from all layers of the algorithm, leaving only its header in the Blockchain.
+     * This method is essential to ease the memory bounds of Toy.
+     * @param index the block to evacuate
+     */
     public void gc(int index)  {
         logger.debug(format("[#%d-C[%d]] clear buffers of [height=%d]", getID(), channel, index));
         Types.Meta key = bc.getBlock(index).getHeader().getM();
@@ -303,12 +358,35 @@ public abstract class ToyServer extends Node implements Server {
         }
     }
 
+    /**
+     * Implement the specific leader phase of the Toy server. For example, if you wish to implement an
+     * async Toy server (for testing) you should implement a custom leader phase in which at
+     * every round the server sleeps for random time
+     * @return the block the leader wish to disseminated on its turn
+     * @throws InterruptedException
+     */
     abstract Types.Block leaderImpl() throws InterruptedException;
 
+    /**
+     * Initiate the Blockchain of this server
+     * @param id the server ID
+     * @param channel the channel ID (with a single Toy group this is always 0)
+     * @return new empty Blockchain
+     */
     abstract public Blockchain initBC(int id, int channel);
 
+    /**
+     * Get sub-blockchain between indexes <i>start</i> and <i>end</i>
+     * @param start the index to start with the sub-blockchain
+     * @param end the index to end with the sub-blockchain
+     * @return a sub-blockchain fron <i>start</i> to <i>end</i>
+     */
     abstract public Blockchain getBC(int start, int end);
 
+    /**
+     * Get the transaction pool size
+     * @return the transaction pool size
+     */
     public int getTxPoolSize() {
         return transactionsPool.size();
     }
@@ -444,6 +522,12 @@ public abstract class ToyServer extends Node implements Server {
         handleFork(p);
     }
 
+    /**
+     * Deliver the index_th block and blocks the calling thread
+     * @param index the index of the block to return
+     * @return the block in height <i>index</i>
+     * @throws InterruptedException
+     */
     public Types.Block deliver(int index) throws InterruptedException {
         synchronized (newBlockNotifyer) {
             while (index >= bc.getHeight() - (f + 1)) {
