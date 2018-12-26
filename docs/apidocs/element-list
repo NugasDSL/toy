@@ -1,4 +1,7 @@
-toy.app
 toy.blockchain
 toy.config
+toy.crypto
+toy.das.atomicBroadcast
+toy.das.bbc
+toy.das.wrb
 toy.servers
