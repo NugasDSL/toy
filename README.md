@@ -157,3 +157,7 @@ The client implements a simple gRPC client. Note that:
     to add it to the Blockchain.
 * Hence, even if `get` failed, it might be either because the transaction was never submitted or because it has not 
 added to the Blockchain yet.
+
+## Useful Links
+1. [javadoc](https://nugasdsl.github.io/toy/apidocs/overview-summary.html)
+2. [Paper]()
