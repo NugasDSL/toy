@@ -11,7 +11,7 @@ _Partial synchronous_ means that after an unknown time _t_ there is an unknown u
 ### Related Work
 Toy currently uses [bft-SMaRt](https://github.com/bft-smart/library) as an underlying platform to tolerate the non-optimistic scenarios.  
 ### Papers
-This work is an implementation of the TOY algorithm described in TBA
+This work is an implementation of the TOY algorithm described in [https://arxiv.org/abs/1901.03279](https://arxiv.org/abs/1901.03279)
 
 ## Getting Started
 ### Installation (for Ubuntu)
@@ -160,4 +160,4 @@ added to the Blockchain yet.
 
 ## Useful Links
 1. [javadoc](https://nugasdsl.github.io/toy/apidocs/overview-summary.html)
-2. [Paper]()
+2. [Paper](https://arxiv.org/abs/1901.03279)
