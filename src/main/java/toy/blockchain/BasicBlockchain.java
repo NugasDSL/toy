@@ -25,6 +25,8 @@ public class BasicBlockchain extends Blockchain {
         super(creatorID, channel);
     }
 
+    public BasicBlockchain(int creatorID) { super(creatorID); }
+
     @Override
     public Block createNewBLock() {
         return new BasicBlock();

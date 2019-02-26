@@ -20,7 +20,7 @@ public abstract class Blockchain {
 
     /**
      * Constructor
-     * @param creatorID the creator server ID
+     * @param creatorID the creating server ID
      * @param channel the creator server channel (with a single Toy group this is always 0)
      */
     public Blockchain(int creatorID, int channel) {
@@ -37,6 +37,14 @@ public abstract class Blockchain {
     public Blockchain(Blockchain orig, int start, int end) {
         this.creatorID = orig.creatorID;
         this.blocks.addAll(orig.getBlocks(start, end));
+    }
+
+    /**
+     * Builds an empty blockchain
+     * @param creatorID the creating server ID
+     */
+    public Blockchain(int creatorID) {
+        this.creatorID = creatorID;
     }
 
     /**
@@ -120,6 +128,18 @@ public abstract class Blockchain {
      */
     public boolean validateBlockHash(Types.Block b) {
         byte[] d = DigestMethod.hash(blocks.get(b.getHeader().getHeight() - 1).getHeader().toByteArray());
+        return DigestMethod.validate(b.getHeader().getPrev().toByteArray(),
+                Objects.requireNonNull(d));
+    }
+
+    /**
+     * Validate the hash of a given block against another given block,
+     * @param prev The block to validate against
+     * @param b The block to be validate
+     * @return true if valid, false if not
+     */
+    static public boolean validateBlockHash(Types.Block prev, Types.Block b) {
+        byte[] d = DigestMethod.hash(prev.getHeader().toByteArray());
         return DigestMethod.validate(b.getHeader().getPrev().toByteArray(),
                 Objects.requireNonNull(d));
     }

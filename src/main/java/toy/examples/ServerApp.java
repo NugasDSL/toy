@@ -5,8 +5,8 @@ import io.grpc.stub.StreamObserver;
 import toy.config.Config;
 import toy.proto.Types;
 import toy.proto.BlockchainServiceGrpc;
-import toy.servers.CTServer;
 import toy.servers.ToyServer;
+import toy.servers.ToyBaseServer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,13 +15,13 @@ public class ServerApp extends BlockchainServiceGrpc.BlockchainServiceImplBase {
     private static org.apache.log4j.Logger logger;
     private int port;
     private Server reqReciever;
-    private ToyServer tServer;
+    private ToyBaseServer tServer;
 
     public ServerApp(int id, int port, Path config) {
         this.port = port;
         Config.setConfig(config, id);
         logger = org.apache.log4j.Logger.getLogger(ServerApp.class);
-        tServer = new CTServer(Config.getAddress(id), Config.getPort(id), id, 0, Config.getF()
+        tServer = new ToyServer(Config.getAddress(id), Config.getPort(id), id, 0, Config.getF()
                 , Config.getTMO(), Config.getTMOInterval(), Config.getMaxTransactionsInBlock(),  Config.getFastMode()
                 , Config.getCluster(), Config.getRMFbbcConfigHome(), Config.getPanicRBConfigHome()
                 , Config.getSyncRBConfigHome(), Config.getServerCrtPath(), Config.getServerTlsPrivKeyPath()
