@@ -472,7 +472,7 @@ public class WrbService extends WrbGrpc.WrbImplBase {
                     setSender(id).
                     setChannel(channel).
                     setCid(cid).
-                    setCidSeries(cid).
+                    setCidSeries(cidSeries).
                     build();
             responseObserver.onNext(Types.Res.newBuilder().
                     setData(msg).
