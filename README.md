@@ -1,3 +1,5 @@
+# Deprecated
+The current working project is at https://github.com/TopToy/TopToy
 # Toy - A Total ordering Optimistic sYstem
 ## Introduction
 ### Abstract
